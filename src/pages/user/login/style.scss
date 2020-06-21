@@ -1,4 +1,11 @@
-.main {
+@import '../../../styles/variable';
+
+.login {
     width: 368px;
-    margin: 0 auto;
+    margin: auto;
+    margin-top: 3rem;
+
+    @media screen and (max-width: $screen-sm) {
+        width: 95%;
+      }
 }
