@@ -1,0 +1,12 @@
+@import '../../../styles/variable';
+.page-login {
+  height: 100%;
+}
+.login-form {
+    width: 368px;
+    margin: 0 auto;
+    margin-top: 10rem;
+    @media screen and (max-width: $screen-sm) {
+      width: 95%;
+    }
+}
