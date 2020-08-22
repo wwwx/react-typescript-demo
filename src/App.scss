@@ -1,7 +1,4 @@
-@import '~antd/dist/antd.css';
 @import './styles/index.scss';
-$headerbar-height: 72px;
-
 // Color Pallete
 
 $blue: #007bff;
@@ -77,35 +74,37 @@ $dark-m-purple-mid: #9673b9bb;
 $dark-m-purple-light: #40008050;
 
 
-// .App {
-//   margin: 0;
-//   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-//     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-//     sans-serif;
-//   -webkit-font-smoothing: antialiased;
-//   -moz-osx-font-smoothing: grayscale;
-// }
+html {
+  overflow-x: hidden;
+  width: 100vw;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; // 不要设置为 min-height: 100vh; 因为使用useLockBodyScroll时， body会添加或修改这个样式 overflow: hidden; 
+}
 
 // code {
 //   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
 //     monospace;
 // }
 
-
-.container {
-  margin: 0 auto;
-  padding: 0 16px;
-  width: 100%;
-  max-width: 1200px;
-}
 .h-100 {
   height: 100vh;
 }
 .w-100 {
   width: 100%;
-}
-.body-container {
-  padding-top: $headerbar-height;
 }
 img.small-image {
   width: 120px;
@@ -113,53 +112,6 @@ img.small-image {
   min-height: 120px;
   background-color: #bbbbbb;
 
-}
-
-.header-bar {
-  background-color: #212121;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-  color: white;
-  width: 100%;
-  position: fixed;
-  top: 0;
-  z-index: 999;
-  .brand {
-    display: flex;
-    align-items: center;
-    height: $headerbar-height;
-    margin-right: auto;
-    padding-left: 24px;
-    -webkit-font-smoothing: auto;
-    text-decoration: none;
-    user-select: none;
-  }
-  .brand_title {
-    font-size: 1rem;
-    font-weight: 600;
-    line-height: 1.5;
-    text-transform: uppercase;
-  }
-  .nav {
-    padding-right: 24px;
-    a {
-      color: white;   
-      padding: 0 16px;
-      font-size: 1rem;
-      height: $headerbar-height;
-      line-height: $headerbar-height - 4px;
-      box-sizing: border-box;
-      border-bottom: 4px solid transparent;
-      transition: border-bottom .28s;
-      transform-origin: left bottom;
-      &.active {
-        border-bottom: 4px solid white;
-      }
-    }
-    &:hover {
-      a { color:  #bbbbbb}
-      a.active { border-bottom-color: #bbbbbb; }
-    }
-  }
 }
   
 
@@ -169,6 +121,7 @@ img.small-image {
   justify-content: space-between;
   align-items: center;
   height: 4rem;
+  user-select: none;
 
   a {
     color: inherit;
@@ -182,7 +135,7 @@ img.small-image {
     font-weight: 600;
     padding: 1.5rem;
     text-align: center;
-    // width: 3rem;
+    width: 3rem;
 
     &:hover {
       color: $gray;
@@ -207,7 +160,7 @@ img.small-image {
     font-weight: 600;
     padding: 1.5rem;
     text-align: center;
-    // width: 3rem;
+    width: 3rem;
   }
 
   .expand {
@@ -217,16 +170,70 @@ img.small-image {
     flex-direction: column;
     width: 100vw;
     z-index: 9999;
-  }
 
+    & > * {
+      border-bottom: 1px solid $green-light;
+      border-top: 1px solid $green-light;
+      padding: 1.5rem;
+      transition: all .15s ease-in-out;
+
+      &:hover {
+        background-color: $gray-hover;
+      }
+
+      span.focused {
+        background-color: $pblue-light;
+        color: $pblue;
+        padding: .25rem;
+      }
+    }
+  }
 }
 
 @media (max-width: $screen-md) {
   .Navbar {
     .expand {
-      height: calc(100% - 4rem);
+      height: 100%;
       overflow: auto;
       transform: none !important;
+    }
+  }
+}
+
+@media (min-width: $screen-md) {
+  .Navbar {
+    background-color: $gray-light-opaque;
+    flex-direction: column;
+    height: 100%;
+    position: fixed;
+    justify-content: flex-start;
+    min-width: 5rem;
+    z-index: 999;
+
+    .navbar-left {
+      margin-bottom: .5rem;
+      margin-top: auto;
+
+      order: 3;
+    }
+
+    .navbar-middle {
+      font-size: .6rem;
+      order: 1;
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+      width: 54px;
+      word-wrap: break-word;
+      text-align: center;
+    }
+
+    .navbar-right {
+      order:2;
+      // padding-bottom: 0;
+      // padding-top: 0;
+    }
+    .expand {
+      
     }
   }
 }

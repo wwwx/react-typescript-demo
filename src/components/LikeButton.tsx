@@ -3,7 +3,6 @@ import Doggy from './Doggy'
 import List from './List'
 import Form from './Form'
 import Temperature from './Temperature'
-import {Button} from 'antd'
 
 const LikeButton: React.FC = () => {
     const [like, setLike] = useState(0)
@@ -19,8 +18,8 @@ const LikeButton: React.FC = () => {
             <Form />
             <List />
             <div className="my-3" style={{ float: 'right' }}>
-                <Button type="primary" className="mr-3" onClick={() => {setLike(like + 1)}}>{like} like</Button>
-                <Button type="primary" className="mr-3 float-right" danger onClick={() => {setOn(!on)}}>{on ? 'No' : 'OFF'}</Button>
+                <button className="mr-3" onClick={() => {setLike(like + 1)}}>{like} like</button>
+                <button className="mr-3 float-right" onClick={() => {setOn(!on)}}>{on ? 'No' : 'OFF'}</button>
             </div>
             <Doggy on={on} />
         </React.Fragment>
