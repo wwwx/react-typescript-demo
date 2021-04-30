@@ -201,13 +201,18 @@ img.small-image {
 }
 
 @media (min-width: $screen-md) {
+  .App {
+    margin-left: 5rem;
+    padding: .75rem;
+  }
   .Navbar {
     background-color: $gray-light-opaque;
     flex-direction: column;
     height: 100%;
     position: fixed;
+    left: 0;
     justify-content: flex-start;
-    min-width: 5rem;
+    width: 5rem;
     z-index: 999;
 
     .navbar-left {
